@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" group="recall/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-212904313/recall.iml" filepath="$PROJECT_DIR$/.idea/modules/-212904313/recall.iml" group="recall" />
+    </modules>
+  </component>
+</project>
