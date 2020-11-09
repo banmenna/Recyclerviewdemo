@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme">
         <provider
             android:name=".WordsProvider"
-            android:authorities="com.example.wordbook.wordsprovider"
+            android:authorities="com.example.wordbook.WordsProvider"
             android:enabled="true"
             android:exported="true">
 

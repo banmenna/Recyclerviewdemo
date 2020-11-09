@@ -16,8 +16,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
+
     }
 
 
@@ -180,16 +183,19 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
     }
 
     @Override
-    public void onDeleteDialog(String strId) {
+    public void onDeleteDialog(final String strId) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                           final View viewDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.deletedialog, null, false);
                           builder.setTitle("删除单词").setView(viewDialog)
                                   .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                       @Override
                                       public void onClick(DialogInterface dialogInterface, int i) {
-                                          TextView id = (TextView) findViewById(R.id.textId);
+//                                          TextView id = (TextView) findViewById(R.id.textId);
+//                                          WordsDB wordsDB=WordsDB.getWordsDB();
+//                                          wordsDB.Delete(id.getText().toString());
                                           WordsDB wordsDB=WordsDB.getWordsDB();
-                                          wordsDB.Delete(id.getText().toString());
+                                          wordsDB.Delete(strId);
+
                                           //单词已经删除，更新显示列表
                                           RefreshWordItemFragment();
                                       }
@@ -205,8 +211,23 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
 
     }
 
+//    @Override
+//    public void onUpdateDialog(String strId) {
+//        WordsDB wordsDB=WordsDB.getWordsDB();
+//        if (wordsDB != null && strId != null) {
+//
+//
+//            Words.WordDescription item = wordsDB.getSingleWord(strId);
+//            if (item != null) {
+//                UpdateDialog(strId, item.word, item.meaning, item.sample);
+//            }
+//
+//        }
+//
+//    }
 
-    @Override
+
+        @Override
     public void onUpdateDialog(String strId) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                           final View viewDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.upgradedialog, null, false);
@@ -234,3 +255,43 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
     }
 
 }
+//private void UpdateDialog(final String strId, final String strWord, final String strMeaning, final String strSample) {
+//                          final View viewDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.upgradedialog, null, false);
+//                          ((EditText) viewDialog.findViewById(R.id.EditWord)).setText(strWord);
+//    ((EditText) viewDialog.findViewById(R.id.EditMeaning)).setText(strMeaning);
+//    ((EditText) viewDialog.findViewById(R.id.EditSample)).setText(strSample);
+//
+////                                          EditText EditWord=(EditText)viewDialog.findViewById(R.id.EditWord);
+////                                          EditText EditMeaning=(EditText)viewDialog.findViewById(R.id.EditMeaning);
+////                                          EditText EditSample=(EditText) viewDialog.findViewById(R.id.EditSample);
+//    new android.app.AlertDialog.Builder(this)
+//            .setTitle("修改单词")//标题
+//            .setView(viewDialog)//设置视图
+//            //确定按钮及其动作
+//            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//                    String strNewWord = ((EditText) viewDialog.findViewById(R.id.EditWord)).getText().toString();
+//                    String strNewMeaning = ((EditText) viewDialog.findViewById(R.id.EditMeaning)).getText().toString();
+//                    String strNewSample = ((EditText) viewDialog.findViewById(R.id.EditSample)).getText().toString();
+//
+//                    //既可以使用Sql语句更新，也可以使用使用update方法更新
+//                    WordsDB wordsDB=WordsDB.getWordsDB();
+//                    wordsDB.Update(strId, strWord, strNewMeaning, strNewSample);
+//
+//                    //单词已经更新，更新显示列表
+//                    RefreshWordItemFragment();
+//                }
+//            })
+//            //取消按钮及其动作
+//            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                }
+//            })
+//            .create()//创建对话框
+//            .show();//显示对话框
+//
+//
+//}

@@ -34,7 +34,7 @@ public class Words {
         }
     }
 
-    public static final String AUTHORITY = "com.example.wordbook.wordsprovider";//URI授权者
+    public static final String AUTHORITY = "com.example.wordbook.WordsProvider";//URI授权者
 
     public Words() {
     }
